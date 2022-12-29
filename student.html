@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+
+  </script>
+
+
+</head>
+
+<body>
+
+  <div class="info">
+    <div class="container">
+      <h2>
+        إضافة طالب
+      </h2>
+      <div class="input-info">
+        <form action="#table" id="my_captcha_form">
+          <div class="sign-info">
+            <div class="name">
+              <div class="field">
+                <input type="text" placeholder="Amera_8546" id="username" name="username">
+                <h3>
+                  : اسم المستخدم
+                </h3>
+              </div>
+              <div class="warning">
+                The name must be in English and the first letter of the first name must be a capital letter
+                The second name is the user number
+                separated between _
+              </div>
+
+            </div>
+            <div class="student">
+              <div class="field">
+                <input type="text" placeholder="اميرة اميرة" id="studentname" name="studentname">
+                <h3>
+                  : اسم الطالب
+                </h3>
+              </div>
+              <div class="warning">
+                It must be in Arabic and can contain spaces only
+              </div>
+            </div>
+            <div class="birthday">
+              <div class="field">
+                <input type="date" placeholder=" تاريخ الولادة" id="birthday" name="birthday">
+                <h3>
+                  : تاريخ الولادة
+                </h3>
+              </div>
+              <div class="warning">
+                birthday must not be empty try writing a valid birthday
+              </div>
+            </div>
+            <div class="phonenumber">
+              <div class="field">
+                <input type="text" placeholder="رقم الموبايل" min="0" size="7" id="phonenumber" name="phonenumber">
+                <h3>
+                  : الموبايل
+                </h3>
+              </div>
+              <div class="warning">
+                Mobile Number must start with +963 and consints of 7 numbers after (+963) and not empty
+              </div>
+            </div>
+
+            <div class="field">
+              <select class="form-select" aria-label="Default select example" onchange="changeProgram(event)">
+                <option selected>BIT</option>
+                <option >TIC</option>   
+              </select>
+              <h3 class="nummon"> البرنامج </h3>
+            </div>
+            
+            <div class="form_container">
+              <div class="g-recaptcha" style="margin:0" data-sitekey="6LfI4XUgAAAAAByQ9PHk9NkCnPZKb3TlWBokgiCe">
+              </div>
+            </div>
+            <button type="submit"> إضافة </button>
+          </div>
+        </form>
+      </div>
+
+      <br><br><br>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <div class="allstudent">
+    <div class="container">
+      <h2>
+        جدول بأسماء الطلاب
+      </h2>
+
+      
+      <div class="field">             
+        <select class="form-select" aria-label="Default select example" onchange="filterObjects(event)">
+          <option selected>All</option>
+          <option >BIT</option>
+          <option >TIC</option>
+        </select>
+        <h3 class="nummon"> البرنامج </h3>
+      </div>
+
+      <div class="sort">
+        <div class="form-check form-check-inline">
+          <label class="form-check-label" for="inlineRadio3">
+            البرنامج
+          </label>
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" onclick="orderBy('programName')" value="option3">
+        </div>
+
+
+        <div class="form-check form-check-inline">
+          <label class="form-check-label" for="inlineRadio2">
+            اسم الطالب
+          </label>
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" onclick="orderBy('studentName')"  value="option2">
+        </div>
+
+        <div class="form-check form-check-inline ">
+          <label class="form-check-label" for="inlineRadio1">
+            رقم المستخدم
+          </label>
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" onclick="orderBy('studentId')" id="inlineRadio1" value="option1"
+            checked>
+        </div>
+        <h3 for="countyear"> الفرز حسب</h3>
+      </div>
+
+
+      <table class="table-bordered" id="table">    
+        <thead>
+          <tr>
+            <th scope="col">البرنامج</th>
+            <th scope="col">الموبايل</th>
+            <th scope="col">اسم الطالب</th>
+            <th scope="col">اسم المستخدم</th>
+            <th scope="col">متسلسل</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+      </table>
+
+    </div>
+
+  <button onclick="convertToJson()"> Convert To Json </button>
+
+  <textarea id="studentsData" name="studentsData" style="width: 874px; height: 285px;" cols="30" rows="10"></textarea>
+</div>
+
+
+
+  <script src="myFunction.js"></script>
+</body>
+</html>
